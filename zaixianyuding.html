@@ -1,0 +1,184 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>米迪拉婚庆公司</title>
+    <link rel="stylesheet" type="text/css" href="css/css.css">
+    <link rel="stylesheet" type="text/css" href="css/online_buy.css">
+    <style type="text/css">
+    form .green_color{
+        border:1px solid green;
+      }
+    form .red_color{
+        border:1px solid red;
+      }
+    </style>
+
+</head>
+<body>
+	<!-- 头部开始 -->
+<div class="header">
+	<div class="top">
+		<div class="nav">
+			<span><img src="images/logo_midila.png"></span>
+				<ul>
+					<li><a href="">首页</a></li>
+					<li><a href="">分类</a></li>
+					<li><a href="">客片</a></li>
+					<li><a href="">报价</a></li>
+					<li><a href="">微视屏</a></li>
+					<li><a href="">品牌介绍</a></li>
+					<li><a href="">客服</a></li>
+				</ul>
+		</div>
+	</div>
+</div>
+<!-- 头部结束 -->
+<div class="contact">
+     <div class="contact_mian">
+          <div class="contact_mian_one">
+               <span class="red_radiu">
+               </span>
+               <h1>在线订购</h1>
+          </div>
+<!-- 表单开始 -->
+          <div class="begin_cell">
+             <div class="cell_alls">
+                  <form action="xxx.htm" method="post" onsubmit="return allinput()">
+                       <div class="cell_left">
+                            <p>您的名字:</p> <input type="text"  id="useName" onblur="isuseName()">
+                            <img src="images/icon_zhuangshi.png"><br/>
+                            <p>手机号码:</p> <input type="text"  id="int" onblur="ints()"><img src="images/icon_zhuangshi.png"><br/>
+                            <p>拍摄套餐:</p> 
+                            <select type="text"  class="taocan" id="styles" onblur="isstyle()">
+                                  <option>大众风格</option>
+                                  <option>欧式风格</option>
+                                  <option>中式风格</option>
+                            </select>
+
+                            <img src="images/icon_zhuangshi.png"><br/>
+                      </div>
+                     <div class="cell_right">
+                            <p>QQ 号码:</p> <input type="text"  id="useQQ" onblur="isQQ()"><img src="images/icon_zhuangshi.png"><br/>
+                            <p>您的邮箱:</p> <input type="email"  id="useEmail"  onblur="isEmail()"> <br/>
+                            <p>拍摄日期:</p>  <input type="date"  class="data_pishe" id="intdate" onblur="isDate()">
+                      </div>
+                      <div class="areas">
+                           <p>您的备注:</p> 
+                           <textarea class="textarea" id="moreText" onblur="moreTst()"></textarea>
+                           <div class="biaozhu">
+                               <p class="zhushi">注：标*为必填项！</p>
+                               <input type="submit" value="提交订单" class="submit">
+                           </div>
+
+                      </div> 
+                  </form> 
+             </div>
+         </div>
+<!-- 表单结束 -->
+     </div>              
+</div>
+<!-- contact部分结束 -->
+<script type="text/javascript">
+// 使用者
+function isuseName(){
+    var obj=document.getElementById("useName");
+    if(/^\W{2,}$/.test(obj.value)){
+       obj.className="green_color";
+       return true;
+    }else{
+   obj.className="red_color";
+       return false;
+    }
+}
+// 手机号码
+ function ints(){
+    var obj=document.getElementById("int");
+    if(/^\s*[0-9]{8,11}\s*$/.test(obj.value)){
+       obj.className="green_color";
+       return true;
+    }else{
+   obj.className="red_color";
+       return false;
+    }
+}
+// 邮箱
+function isEmail(){
+    var obj=document.getElementById("useEmail");
+    // var filter=/^\s*([A-Za-z0-9_-]+(\.\w+)*@(\w+\.)+\w{2,3})\s*$/;
+    if(/^(\w-*\.*)+@(\w-?)+(\.\w{2,})+$/.test(obj.value)){
+       obj.className="green_color";
+       return true;
+    }else{
+       obj.className="red_color";
+       return false;
+    }
+}
+// QQ号码
+function isQQ(){
+    var obj=document.getElementById("useQQ");
+    if(/^\s*[0-9]{5,11}\s*$/.test(obj.value)){
+      obj.className="green_color";
+       return true;
+    }else{
+    obj.className="red_color";
+       return false;
+    }
+}
+// 日期
+function isDate(){
+    var obj=document.getElementById("intdate");
+    if(!obj.value==""){
+      obj.className="green_color";
+       return true;
+    }else{
+    obj.className="red_color";
+       return false;
+    }
+}
+// 风格
+function isstyle(){
+    var obj=document.getElementById("styles");
+    if(!obj.value==""){
+      obj.className="green_color";
+       return true;
+    }else{
+    obj.className="red_color";
+       return false;
+    }
+}
+// 多行文本
+function moreTst(){
+    var obj=document.getElementById("moreText");
+    if(obj.value != ""){
+       return true;
+    }else{
+       return false;
+    }
+}
+// 整体验证
+function allinput(){
+    return isuseName()　&&  isEmail() && isTel() && isQQ() && isDate() && isstyle() && moreTst();
+}
+</script>
+
+<!-- 尾部开始 -->
+<div class="footer">
+  <div class="start" style="padding-top:40px;">
+    <span><a href="">客服电话&nbsp;:&nbsp;18336308675</a></span>
+    <p><a href="">咨询电话&nbsp;:&nbsp;0394-86395412&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0371-12658949</a></p>
+    <p><a href="">地址&nbsp;:&nbsp;上海市连园区89号</a></p>
+    <p><a href="">Copyright&nbsp;&nbsp;©&nbsp;&nbsp;2000-2016XINHUANET.com&nbsp;All&nbsp;Rights&nbsp;Reserved</a></p>
+    <ul>
+      <li><a href="">QQ</a></li>
+      <li><a href="">微信</a></li>
+      <li><a href="">新浪</a></li>
+      <li><a href="">豆瓣</a></li>
+      <i><img src="images/logo_midila3.png"></i>
+    </ul>
+  </div>
+</div>
+
+<!-- 尾部结束 -->
+</body>
+</html>
