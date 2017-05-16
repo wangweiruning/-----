@@ -12,25 +12,6 @@
     form .red_color{
         border:1px solid red;
       }
-    #selectYear{
-        display:inline-block;
-        margin-left: 130px;
-        margin-top: 20px;
-      }
-      /*下拉框*/
-    .select-ipt {color:#888888;cursor: pointer;background: url(images/last_pic.png) no-repeat center right;
-    cursor:pointer;width:320px;height: 54px;margin:0px 0px 0px 0px;padding:3px 0px 0px 0px;
-    line-height:54px;font-size:24px;text-align: center;
-    border-radius: 5px;
-    background-color: #fff;}
-    /*样式一：下拉一排一个*/
-    .select-list {border: 1px #ccc solid;width:320px;margin-left:0px;position:absolute;z-index:10000;background:#E9E9E9;}
-    .select-list span{cursor:pointer;display:block;width:100%;height:54px;line-height:54px;padding:0;font-size:20px;text-align: center;color:#666666;}
-    .select-list span:hover{background:#000;color:#fff}
-    .stoping{
-      position: absolute;
-      margin-top: 30px;
-}
     </style>
 
 </head>
@@ -68,79 +49,14 @@
                             <p>您的名字:</p> <input type="text"  id="useName" onblur="isuseName()">
                             <img src="images/icon_zhuangshi.png"><br/>
                             <p>手机号码:</p> <input type="text"  id="int" onblur="ints()"><img src="images/icon_zhuangshi.png"><br/>
-                            <p class="stoping">拍摄套餐:</p> 
-                         <div id="selectYear">
-                            <div class="select-ipt" id="styles" onblur="isstyle()"></div><!--显示框，存放span的innerHTML,相当于option的innerHTML-->
-                            <div style="display: none " class="select-list"><!--下拉框-->
-                              <span id="1">大众模式</span>
-                              <span id="2">普通模式</span>
-                              <span id="3">欧美模式</span> 
-                            </div>
-                            <input type="hidden" /><!--存放span的id，相当于option的value-->
-                        </div><img src="images/icon_zhuangshi.png"><br/>  
+                            <p>拍摄套餐:</p> 
+                            <select type="text"  class="taocan" id="styles" onblur="isstyle()">
+                                  <option>大众风格</option>
+                                  <option>欧式风格</option>
+                                  <option>中式风格</option>
+                            </select>
 
-<script type="text/javascript" >
-function SelectPullDown(box){
-    this.selectBox = document.getElementById(box);
-    this.selectIpt = document.getElementById(box).getElementsByTagName("input")[0];//传值表单
-    this.selectDivBtn = document.getElementById(box).getElementsByTagName("div")[0];//选中显示框
-    this.selectDivList = document.getElementById(box).getElementsByTagName("div")[1];////下拉框
-    this.selectSpan = document.getElementById(box).getElementsByTagName("span");//选项
-}
-SelectPullDown.prototype ={
-    selectBox : '',//document.getElementById('selectYear').getElementsByTagName("input")[0],
-    selectIpt : '',//document.getElementById('selectYear').getElementsByTagName("input")[0],
-    selectDivBtn : '',//document.getElementById('selectYear').getElementsByTagName("div")[0],
-    selectDivList : '',//document.getElementById(box).getElementsByTagName("div")[1];
-    selectSpan : '',//document.getElementById('selectYear').getElementsByTagName("span"),
-    iptEven : function(){
-        var self = this;
-        this.selectBox.onmouseover = function(){
-            self.selectListShow();
-        }    
-        this.selectBox.onmouseout = function(){
-            self.selectListHide();
-        }
-        return this;    
-    },
-    selectListShow: function(){
-        this.selectDivList.style.display = "block";
-    },
-    selectListHide: function(){
-        this.selectDivList.style.display = "none";
-    },
-    selectPick : function() {
-        var span = this.selectSpan,
-        self = this;
-        function trimStr(str){return str.replace(/(^\s*)|(\s*$)/g,"");}
-        for(var i=0;i<span.length;i++){
-            span[i].onclick = function(){
-                self.selectDivBtn.innerHTML = trimStr(this.innerHTML);
-                self.selectIpt.value= trimStr(this.id);
-                self.selectListHide();
-                //chang事件触发
-                if (self.selectIpt.fireEvent) self.selectIpt.fireEvent('onchange');
-                else{ 
-                    var evt;
-                    evt = document.createEvent("HTMLEvents");  
-                    evt.initEvent("change", true, true);  
-                    self.selectIpt.dispatchEvent(evt);
-                };
-            }
-        }    
-        return this;
-    },
-    init : function(){
-        this.iptEven().selectPick();    
-    }
-};
-//调用方法
-var year = new SelectPullDown('selectYear');
-year.init();
-
-
-</script>
-                            
+                            <img src="images/icon_zhuangshi.png"><br/>
                       </div>
                      <div class="cell_right">
                             <p>QQ 号码:</p> <input type="text"  id="useQQ" onblur="isQQ()"><img src="images/icon_zhuangshi.png"><br/>
@@ -149,7 +65,7 @@ year.init();
                       </div>
                       <div class="areas">
                            <p>您的备注:</p> 
-                           <textarea class="textarea" id="moreText" onblur="moreTst()" placeholder="请输入内容!"></textarea>
+                           <textarea class="textarea" id="moreText" onblur="moreTst()"></textarea>
                            <div class="biaozhu">
                                <p class="zhushi">注：标*为必填项！</p>
                                <input type="submit" value="提交订单" class="submit">
@@ -172,9 +88,7 @@ function isuseName(){
        return true;
     }else{
    obj.className="red_color";
-   obj.value="";
        return false;
-
     }
 }
 // 手机号码
@@ -185,7 +99,6 @@ function isuseName(){
        return true;
     }else{
    obj.className="red_color";
-   obj.value="";
        return false;
     }
 }
@@ -198,7 +111,6 @@ function isEmail(){
        return true;
     }else{
        obj.className="red_color";
-       obj.value="";
        return false;
     }
 }
@@ -210,7 +122,6 @@ function isQQ(){
        return true;
     }else{
     obj.className="red_color";
-    obj.value="";
        return false;
     }
 }
