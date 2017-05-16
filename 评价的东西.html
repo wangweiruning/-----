@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="Generator" content="Sublime Text3">
+    <meta name="Author" content="深山一枯柴">
+    <meta name="website" content="http://www.lihui-v.top">
+    <meta name="Description" content="马不停蹄的🐌!">
+    <style type="text/css">
+     *{margin:0;padding:0;}
+	ul{
+		list-style: none;
+		font-size: 70px;
+		color:green;
+	}
+	li{
+		float: left;
+	}
+    </style>
+    <script type="text/javascript" src="jquery-3.1.1.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+        	var  ishave = "★",isnone = "☆";
+        	$("li").mouseenter(function(){
+        		$("li").removeData();
+        		$(this).text(ishave).prevAll().text(ishave).end().nextAll().text(isnone)
+        	}).click(function(){
+        		$(this).data("check","mark");
+        	})
+        	$("ul").mouseleave(function(){
+        		$("li").text(isnone);
+        		$.each($("li"),function(key,val){
+               if ($(val).data("check")==="mark") {
+                $(this).text(ishave).prevAll().text(ishave).end().nextAll().text(isnone)
+                     };
+        		})
+        	})
+        })
+    </script>
+</head>
+<body>
+    <ul>
+    	<li>☆</li>
+    	<li>☆</li>
+    	<li>☆</li>
+        <li>☆</li>
+        <li>☆</li>
+    </ul>
+</body>
+</html>
